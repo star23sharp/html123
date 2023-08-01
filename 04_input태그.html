@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input태그</title>
+
+    <style>
+        textarea{
+            resize: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- input text에 적히는 내용은 value 값에 해당-->
+    <input type="text" value="" placeholder="아이디 입력..">
+
+    <!-- 따로 클릭 이벤트 처리를 해주지 않으면 -->
+    <!-- 클릭을 해도 아무일도 일어나지 않는다. -->
+    <input type="button" value="클릭">
+    <!-- input button의 강화판 -->
+    <button>클릭</button>
+    <button><img src="data:image/jpeg;base64,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" alt="" width="50" height="50">
+    </button>
+
+    <hr>
+
+    <!-- 사용자로부터 파일을 입력밭음(파일 첨부)-->
+    <input type="file">
+
+    <hr>
+    <!-- name 속성을 일치시키면 그룹화가 된다. -->
+    <!-- 속성란에 checked를 적어주면 처음에 클릭이 되어있다.-->
+    남 <input type="radio" name="gender" value="male" checked> 여 <input type="radio" name="gender" value="female">
+
+    <hr>
+
+    <!-- 체크박스 -->
+    <!-- name 속성을 일치시켜 그룹화를 해주기 -->
+    자신있는 과목 (중복체크 가능) <br>
+    JAVA <input type="checkbox" name="favor" value="java" checked>
+    SQL <input type="checkbox" name="favor" value="sql">
+    HTML <input type="checkbox" name="favor" value="html">
+
+    <hr>
+    이 사이트를 어떻게 알게 되었나요? <br>
+    <select name="" id="">
+        <option value="internet">인터넷 검색</option>
+        <option value="friend">친구 추천</option>
+        <option value="etc">기타</option>
+    </select>
+
+
+    <hr>
+
+    <!-- 한줄 이상을 입력 받는 경우 사용-->
+    <!-- cols가 30이면, 글자 30자 입력시 다음줄로 넘어가는 영역 -->
+    <!-- rows가 10이면, 10줄 입력 영역으로 생성됨.-->
+    <!--  CSSfh resize: none을 넣어주면 사용자 크기 조정 못하게-->
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <!-- input hidden -->
+    <!-- 개발자가 백엔드에서 사용할 값을 사용자에게 노출하지 않는 용도로 사용-->
+    <input type="hidden" name="id" value="superman">
+
+    <hr>
+
+    좋아하는 색 선택 <br>
+    <input type="color">
+
+    <hr>
+    
+    학교 졸업일자 <br>
+    <input type="date">
+
+    <hr>
+    경력 <br>
+    <input type="number">
+
+    <hr>
+    음량 <input type="range" min="0" max="100">
+    <br>
+    마이크 볼륨 <input type="range" min="0" max="100" step="10">
+
+
+    <!-- 위 color 부터 range까지는 유용한 툴이지만 -->
+    <!-- 브라우저별로 나타나는 모양이 달러서 실제 서비스 할때는-->
+    <!-- 별도로 만드는 경우도 많다.-->
+</body>
+</html>
