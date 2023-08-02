@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마진과패딩</title>
+
+    <style>
+        div{
+            /* border(경계선)를 기준으로 안쪽 여뱅 padding */
+            /* 바깥쪽 여백 margin */
+            border: 1px solid black;
+        }
+
+        .container{
+            width: 500px;
+            height: 500px;
+            background-color: ivory;
+
+            padding: 50px; 
+        }
+
+        .top{
+            height: 200px;
+            background-color: azure;
+            margin-bottom: 50px;
+        }
+        .bottom{
+            height: 200px;
+            background-color: violet;
+        }
+
+        img{
+            width: 20px;
+            height: 30px;
+            border: 1px solid black;
+            /* 마우스를 올리면 커서가 변함 */
+            cursor: pointer;
+        }
+
+        .top > img{
+            margin: 20px;
+        }
+
+        .bottom > img{
+            padding: 20px;
+        }
+
+        button{
+            margin-left: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="top">
+            <img src="https://i.namu.wiki/i/p2eRfG7o-0vIbI7brzmewWf02OuWBRSihJ_-O8ue2KYaXSU9QVhwzEGMGQb0N7QonfRwSSsvYPZUDB4BF6087Q.webp" alt="">
+        </div>
+        <div class="bottom">
+            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167792129.jpg" alt="">
+        </div>
+    </div>
+    <input type="text"><button>검색</button>
+</body>
+</html>l
