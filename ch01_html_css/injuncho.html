@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            padding: 30px;
+            color: white;
+        }
+
+        .item-box {
+            width: 1500px;
+            border: 1px solid;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .item-box>div {
+            width: calc(1000px / 3 - 20px);
+            height: 600px;
+            border: 0;
+            box-shadow: 1px 1px 4px 1px gainsboro;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .top {
+            height: 60%;
+        }
+
+        .bottom {
+            height: 40%;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .list-menu {
+            background-color: white;
+            color: black;
+        }
+        .footer{
+            width: 400px;
+            height: 200px;
+            color: white;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            align-items:end;
+            justify-content: end;
+        }
+        .title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sub-title{
+            
+            
+        }
+        .orange{
+            color: orange;
+        }
+        .text{
+            color: white;
+        }
+        .menu-list{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="orange">
+            <a href=""> 맥도날드</a>
+        </div>
+        <div>
+            <a href=""> home</a>
+            <a href=""> 메뉴</a>
+            <a href=""> 매장 찾기</a>
+        </div>
+        <div>
+            <a href=""> 로그인 / 회원가입</a>
+        </div>
+    </div>
+    <div class="title">
+        <div>
+            <img src="../resources/images/이미지/luna.jpeg" alt="">
+        </div>
+        <div class="sub-title">
+            <p class="orange">빅맥 출시</p>
+            <p class="text">둘이 먹다가 하나 죽어도 아무도 모른느 그 환사으이 맛...
+                100% 순 게 살코기에 헤저 치즈, 피클 ,상추, 토마토, 양파
+                그걸 김이 모락모락 가는 참깨빵 사이에 넣어서 먹으면
+            </p>
+        </div>
+    </div>
+    <div class="item-box list-menu">
+        <div class="menu-list">
+            <p> 햄버거 목록 </p>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+        <div>
+            <div class="top center">
+                <img src="../resources/images/이미지/luna.jpeg" alt="">
+            </div>
+            <div class="bottom center">
+                <p>빅맥 <br> 4000원</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h2> (34856) 넥스트 IT 교육센터</h2>
+        <h2> 대전광역시 중구 계룡로 825(용두동, 희영 빌딩 2층)</h2>
+        <h4>Tel : 042-719-8850 Fax : 042-719-8851</h4>
+    </div>
+</body>
+
+</html>
