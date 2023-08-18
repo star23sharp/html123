@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1200px;
+            background-color: black;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .header {
+            width: 1200px;
+            height: auto;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0px;
+        }
+
+        .header p {
+            color: orange;
+            font-size: 20px;
+        }
+
+        .list a {
+            margin: 20px;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border: 20px;
+        }
+
+        .list a:hover {}
+
+        .login {
+            width: 150px;
+            height: 30px;
+            background-color: orange;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .second {
+            border: 1px solid;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .textdetail {
+            color: white;
+        }
+
+        .bottom {
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20%;
+        }
+
+        .cell {
+            background-color: white;
+        }
+
+        .item-box {
+            margin: auto;
+            width: 1000px;
+            border: 1px solid;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: white;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .item-box>div {
+            width: calc(1000px / 3 - 20px);
+            height: 400px;
+            border: 0;
+            box-shadow: 1px 1px 4px 1px black;
+            border-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .top {
+            height: 80%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            background-color: black;
+            color: white;
+        }
+
+        .last {
+
+            background-color: black;
+            color: white;
+            padding: 20px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .detail2 {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <p> <b> MAPLESTORY </b> </p>
+            <div class="list">
+                <a href="">Home</a>
+                <a href="">직업표</a>
+                <a href="">공략 카페</a>
+            </div>
+            <div class="login">로그인 / 회원가입</div>
+        </div>
+
+
+
+        <div class="second">
+            <div>
+                <img width="500px" src="data:image/jpeg;base64,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" alt="">
+            </div>
+
+            <div class="textdetail">
+                <div class="detail2">
+                    검은 마법사
+                </div>
+                <p> 메이플월드의 검은마법사 </p>
+                <p> Black Mage</p>
+                <p> 어리석은 불나방이 </p>
+                <p> 하나 더 날아 들었구나</p>
+            </div>
+
+        </div>
+        <div class="list-menu">
+            <div class="title">
+                <h1>
+                    군단장
+                </h1>
+            </div>
+
+            <div class="item-box">
+
+                <div class="cell">
+                    <div class="top">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTc6z37hrijpW5FJJkxkQVqkNUqEBqQq8EzViAmvYeNV6xRmzin" alt="">
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 힐라</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="top">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRLEAjTTGR0Bz7KaG0Oo-txW0T0rTmStKTNVuqTWWp-cMl_SKfN" alt="">
+
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 루시드</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="top">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRIdFe69wVq_P-DidjwmmF2O37OnjOg_xT20LncEn6qwRp-RY_R" alt="">
+
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 매그너스</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="top">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWqOIQKjzggEtZ4t_pxcXIrXKTmQsw4eRxcodrVFXujEur0blH" alt="">
+
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 오르카 / 스우</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="top">
+                        <img width="230px" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3t2GgZ-4RKwmHPycu-DKq0JrVgToPhNMRTKSAI2PM9O1X7QeG" alt="">
+
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 데몬 / 데미안</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="top">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuje_hBuvBA_snu2o_69RY88hiiUqNfBHhpsk6wEp2QleSZIi1" alt="">
+                    </div>
+                    <div class="bottom">
+                        <div>
+                            <p> 윌</p>
+                            <p> 군단장</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="last">
+               <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3214.4039495768357!2d127.40526707581674!3d36.32675857238597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356549343eea9def%3A0xbce1e1d49463ebe8!2z64Sl7Iqk7Yq47JWE7J207Yuw6rWQ7Jyh7IS87YSw7ZWZ7JuQ!5e0!3m2!1sko!2skr!4v1691042866520!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>]
+            </div>
+                <div>
+                <h1> 넥슨(주)</h1>
+                <h1> 서울특별시 강남구 도산대로 327</h1>
+                <h3> Tel : 01012312312 , Fax : 01012341234</h3>
+                </div>
+            </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 400px;
+            height: 60px;
+            position: relative;
+        }
+
+        .banner {
+            position: absolute;
+            width: 50%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="box">
+        <img class="banner" src="..//resouce/img/cat.jpg" alt="">
+        <img class="banner" src="..//resouce/img/dog.jpg" alt="">
+        <img class="banner" src="../resouce/img/panda.jpg" alt="">
+    </div>
+
+    <script>
+        const v_banner = document.getElementsByClassName("banner");
+
+        for (let i = 0; i < v_banner.length; i++) {
+            v_banner[i].style.zIndex = i;
+        }
+
+        function f_cgIndex() {
+            // v_banner[i]의 z-index가 0이면 1로
+            // 1이면 2로, 2이면 0으로 바꾸기
+            for (let i = 0; i < v_banner.length; i++) {
+                v_banner[i].style.zIndex = (v_banner[i].style.zIndex + 1) % 3;
+            }
+            setTimeout(f_cgIndex, 2000);
+        }
+
+        f_cgIndex();
+    </script>
+</body>
+
+</html>

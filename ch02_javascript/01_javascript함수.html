@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+
+<body>
+    <button onclick="whoAmI()"> 내가 누구냐고 </button>
+    <button onclick="whoAreYou()"> 누구냐!라고 물으신다면 </button>
+    <button onclick="createLotto(1, 45)"> 로또번호 생성 </button>
+
+    <script>
+        //함수의 선언
+        function whoAmI() {
+            // 메시지를 띄워주는 함수
+            alert("알 필요 없다,");
+        }
+        // 함수의 선언2
+        const whoAreYou = function () {
+            alert("대답해드리는게 인지상정");
+        }
+
+        // 함수의 선언 3 (ES6)
+        // 화살표 함수 (람다식)
+        let wellCome = () => {
+            document.write("환영합니다.");
+        }
+
+        // 함수 실행
+        wellCome();
+
+        // 만들어져 있는 함수 사용
+
+        // 랜덤 숫자 생성
+        // Math.random() : 0~1 사이의 랜덤 소수
+        console.log(Math.random())
+
+        //로또 번호 (1 ~ 45) 생성
+        // Math.random() * 45 : 0 ~ 45 사이의 랜덤 소수
+        console.log(Math.random() * 45);
+
+        // Math.floor() : 내림처리 (소수점 이하 다 떼버림)
+        // Math.floor(Math.random() * 45) : 0 ~ 44 사이의 랜덤 정수
+        console.log(Math.floor(Math.random() * 45) );
+        // Math.floor(Math.random() * 45) + 1 : 1 ~ 45 사이의 랜덤 정수가 나오게 된다.
+        console.log(Math.floor(Math.random() * 45) + 1);
+
+        // 10 ~ 20 사이의 랜덤 번호 생성
+        console.log(Math.floor(Math.random() * 10) + 10);
+
+        // 25 ~ 40 사이의 랜덤 번호 생성
+        console.log(Math.floor(Math.random() * 15) + 25);
+
+        // a ~ b사이의 랜덤 번호가 나오려면?
+        // console.log(Math.floor(Math.random() * b - a + 1) + a);
+
+        // a ~ b 사이의 랜덤 정수를 리턴하는 함수
+        function randNum(a, b){
+            return Math.floor(Math.random()*(b-a+1)) +a ;
+        }
+
+        document.write("<h1>" + randNum(1,45) + "</h1>");
+
+        let createLotto = function(a, b){
+            alert(randNum(1, 45));
+            
+        }
+    </script>
+</body>
+
+</html>
