@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>넓은드롭다운</title>
+    <style>
+        .container {
+            width: 800px;
+            height: 700px;
+            border: 1px solid black;
+            background-color: violet;
+        }
+
+        .nav-bar {
+            background-color: ivory;
+            height: 60px;
+            position: relative;
+        }
+        .nav-bar:hover .drop-content{
+            visibility: visible;
+        }
+        .nav{
+            height: 100%;
+            display: flex;
+        }
+        .nav > div {
+            width: calc(100%/5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drop-content {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            background-color: #ffffffaa;
+            visibility: hidden;
+        }
+
+        .drop-content > div {
+            width: calc(100%/5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <img height="80px"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/220px-Pokebola-pokeball-png-0.png"
+                alt="">
+        </div>
+        <div class="nav-bar">
+            <div class="nav">
+                <div>포켓몬 타입</div>
+                <div>스타팅 포켓몬</div>
+                <div>전설의 포켓몬</div>
+                <div>패러독스 및 야생포켓몬</div>
+                <div>DLC</div>
+            </div>
+            <div class="drop-content">
+                <div>
+                    <a href="">풀 타입</a>
+                    <a href="">불 타입</a>
+                    <a href="">물 타입</a>
+                    <a href="">그외 타입</a>
+                </div>
+                <div>
+                    <a href="">냐오하</a>
+                    <a href="">뜨아거</a>
+                    <a href="">꾸왁스</a>
+                </div>
+                <div>
+                    <a href="">코라이돈</a>
+                    <a href="">미라이돈</a>
+                </div>
+                <div>
+                    <a href="">패러독스 포켓몬</a>
+                    <a href="">필드 야생 포켓몬</a>
+                </div>
+                <div>
+                    <a href="">벽록의 가면</a>
+                    <a href="">남청의 원반</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapleStory</title>
+    <style>
+        body {
+            background-color: ivory;
+        }
+
+        div {
+            /* border: 1px solid red; */
+        }
+
+        .container {
+            width: 1280px;
+            height: 720px;
+            border: 2px solid black;
+            margin: auto;
+            background-color: white;
+        }
+
+        .star {
+            width: 100%;
+            height: 12%;
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(225, 228, 87);
+        }
+
+        .starforth {
+            width: 500px;
+            height: 350px;
+            border: 2px solid black;
+            border-radius: 5px;
+
+            position: absolute;
+            top: 25%;
+            left: 50%;
+
+            transform: translate(-50%, 35%);
+        }
+
+        .equip-style {
+            width: 100%;
+            height: 20px;
+            border: 1px solid;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+
+            background-color: #000000bb;
+
+        }
+
+        .head-name {
+            color: gold;
+            font-weight: bold;
+        }
+
+        .weapon-style {
+            width: 100%;
+            border: 1px solid;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+
+            background-color: #000000bb;
+        }
+
+        .reinforce {
+            width: 100%;
+
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            align-items: center;
+
+            background-color: #000000bb;
+        }
+
+        .reinforce>button {
+            width: 150px;
+            height: 80%;
+            border-radius: 5px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: gray;
+            cursor: pointer;
+            box-shadow: 1px 1px 10px #999999 inset;
+        }
+
+        .reinforce>button:nth-child(2) {
+            background-color: skyblue;
+            box-shadow: 1px 1px 10px #ffffff inset;
+        }
+
+        .reinforce>button:hover {
+            filter: brightness(90%);
+        }
+
+
+        .notice {
+            height: 25px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000dd;
+            font-size: 15px;
+            color: white;
+            font-weight: bold;
+            border-radius: 1px;
+            box-shadow: 2px 2px 10px #999999 inset;
+        }
+
+        .information {
+            width: 70%;
+            height: 170px;
+            /* height: 100vh; */
+            overflow-y: scroll;
+            /* padding: 20px; */
+            box-sizing: border-box;
+            color: white;
+            font-size: 18px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px #999999 inset;
+        }
+
+        .weapon-box {
+            width: 170px;
+            height: 170px;
+            border: 1px solid black;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            background-color: rgb(108, 142, 255);
+            border-radius: 10px;
+
+            box-shadow: 1px 1px 10px #ffffff inset;
+        }
+
+        .weapon-border {
+            width: 140px;
+            height: 140px;
+            border: 3px dashed white;
+            filter: brightness(90%);
+        }
+
+        .ckeckbox-style {
+            width: 100%;
+            border: 1px solid;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+
+            background-color: #000000bb;
+        }
+
+        .checkbox-box {
+            width: 230px;
+            border-radius: 6px;
+            background-color: #000000bb;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 2px 2px 10px #999999 inset;
+        }
+
+        .money {
+            height: 25px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000dd;
+            font-size: 15px;
+            color: white;
+            font-weight: bold;
+
+            border-radius: 1px;
+            box-shadow: 2px 2px 10px #999999 inset;
+        }
+
+        .reinforce-btn {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #000000bb;
+
+        }
+
+        .reinforce-btn>button:nth-child(1) {
+            width: 150px;
+            height: 80%;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: green;
+            color: white;
+            margin-right: 10px;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px #ffffff inset;
+        }
+
+        .reinforce-btn>button:hover {
+            filter: brightness(90%);
+        }
+
+        .reinforce-btn>button:nth-child(2) {
+            width: 150px;
+            height: 80%;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: grey;
+            color: white;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px #999999 inset;
+        }
+
+        /* question 모달창 */
+        .modal2 {
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 4px 4px 4px 4px gainsboro;
+
+            position: absolute;
+            top: 10%;
+            left: 50%;
+
+            transform: translate(-50%, 0);
+        }
+
+        @keyframes middle {
+            0% {
+                width: 0px;
+                height: 0px;
+                /* transform: translate(-50%, 0); */
+            }
+
+            100% {
+                width: 400px;
+                height: 300px;
+                /* transform: translate(-50%, 0); */
+            }
+        }
+
+        .middle-modal {
+            animation: middle 1s forwards;
+        }
+
+        .align-end {
+            text-align: end;
+        }
+
+        .align-end-text {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        /* 강화 완료 모달창 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .simull {
+            width: 410px;
+            height: 155px;
+            border: 1px solid red;
+            background-color: white;
+            font-weight: bold;
+
+            position: absolute;
+            right: 96%;
+            top: 108%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> 스타포스 시뮬레이터 </h2>
+    <hr>
+    <div class="container">
+        <div class="star">
+            ☆☆☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br>
+            ☆☆☆☆☆ ☆☆☆☆☆
+        </div>
+        <img width="100%" height="100%" src="../resources/images/이미지/mapleback1.png" alt="">
+        <div class="starforth">
+            <div class="equip-style">
+                <div class="head-imgq">
+                    <img onclick="f_middle()" width="20px" src="../resources/images/이미지/white question.png" alt="">
+                </div>
+
+                <div class="head-name">
+                    <p> EQUIPMENT ENCHANT </p>
+                </div>
+                <div class="head-imgc">
+                    <img width="25px" id="reset-button" src="../resources/images/이미지/white close.png" alt="">
+                </div>
+            </div>
+            <div class="reinforce">
+                <button> 주문서 </button>
+                <button> 스타포스 강화 </button>
+                <button> 장비전승 </button>
+            </div>
+            <div class="notice">
+                <img width="25px" src="../resources/images/이미지/wa.png" alt="">
+                <p>실패 시 장비가 파괴되거나 단계가 하락될 수 있습니다.</p>
+            </div>
+            <div class="modal2 middle-modal d-none">
+                <div class="align-end">
+                    <img onclick="f_close2()" width="30" height="30" src="../resources/images/이미지/close.png" alt="">
+                    <div class="align-end-text">
+                        <p> 스타포스 강화 시뮬레이터 입니다. </p>
+                        <p> 주문서 버튼과 장비전승 버튼은 추후 개발 예정입니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="weapon-style">
+                    <div class="weapon-box">
+                        <div class="weapon-border">
+                            <img width="150px" height="150px" src="../resources/images/이미지/bigsqure.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="information">
+                        <p> 0성 > 1성 </p>
+                        <p> 성공확률 : 95.00% </p>
+                        <p> 실패(유지)확률 : 5.00% </p>
+                        <p> 실패(하락)확률 : 67.90% </p>
+                        <p> 파괴 확률 : 2.10% </p>
+                        <p> STR : + 20</p>
+                        <p> DEX : + 20</p>
+                        <p> INT : + 20</p>
+                        <p> LUK : + 20</p>
+                        <p> 공격력 + 20</p>
+                        <p> 마력 : + 20 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="ckeckbox-style">
+                <div class="checkbox-box">
+                    스타캐치 해제
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                        type="checkbox" checked>
+                </div>
+                <div class="checkbox-box">
+                    파괴 방지
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                        type="checkbox">
+                </div>
+            </div>
+            <div class="money">
+                필요한 메소 : 626,000
+            </div>
+            <div class="reinforce-btn">
+                <button id="reinforceButton"> 강화 </button>
+                <button> 취소 </button>
+            </div>
+            <div class="simull">
+                <p>강화 시도 횟수: <span id="attempts">0</span></p>
+                <p>성공 횟수: <span id="successes">0</span></p>
+                <p>실패 횟수: <span id="failures">0</span></p>
+                <p>소비한 메소 총합: <span id="totalMoneySpent">0</span></p>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>장비가 최대 강화 수치 달성했습니다!</p>
+        </div>
+    </div>
+
+    <script>
+        // 이미지를 클릭하면 페이지를 처음 상태로 되돌리는 함수
+        document.getElementById('reset-button').addEventListener('click', function () {
+            window.location.reload(); // 페이지 새로고침
+        });
+        // question 모달창
+        const v_modal2 = document.getElementsByClassName("modal2")[0];
+
+        function f_middle() {
+            v_modal2.classList.remove("d-none");
+        }
+        function f_close2() {
+            v_modal2.classList.add("d-none");
+        }
+
+        // 강화 학률
+        const reinforceButton = document.getElementById("reinforceButton");
+        const reinforceResults = document.querySelectorAll(".information p");
+        const moneyElement = document.querySelector(".money");
+        const checkboxBox = document.querySelector(".checkbox-box"); // 스타캐치 해제 체크박스를 감싸는 부모 요소의 클래스 이름
+        const checkbox = checkboxBox.querySelector("input[type='checkbox']"); // 체크박스 요소 선택
+        let num = 0;
+        let totalMoneySpent = 0; // 초기 메소 합
+        const modal = document.getElementById("myModal");
+        const closeModal = document.getElementsByClassName("close")[0];
+        const randomValue = Math.random(); // 0부터 1 사이의 무작위 값을 생성
+
+        const attemptsElement = document.getElementById("attempts"); // 시도 횟수를 나타내는 엘리먼트
+        const successesElement = document.getElementById("successes"); // 성공 횟수를 나타내는 엘리먼트
+        const failuresElement = document.getElementById("failures"); // 실패 횟수를 나타내는 엘리먼트
+
+        reinforceButton.addEventListener("click", function () {
+            if (num < 25) { // 최대 25번까지 강화 시도
+                const randomValue = Math.random();
+                const currentAttempts = parseInt(attemptsElement.textContent);
+                const currentSuccesses = parseInt(successesElement.textContent);
+                const currentFailures = parseInt(failuresElement.textContent);
+
+                attemptsElement.textContent = currentAttempts + 1;
+
+                if (num < 1) {
+                    // 0성 > 1성 강화 확률
+                    if (randomValue < 0.90) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "1성 > 2성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 90.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 10.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 641,000"; // 메소 필요량 변경
+                        totalMoneySpent += 641000; // 성공 시 메소 추가
+                        // 강화 성공 레벨에서만 노란색 ★로 변경
+                        document.querySelector('.star').innerHTML = "★☆☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆";
+                    } else {
+                        num = 0;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "0성 > 1성"; // 강화 실패 시 초기화
+                        reinforceResults[1].textContent = "성공확률 : 95.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 5.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 321,000"; // 메소 필요량 초기화
+                        totalMoneySpent += 321000; // 실패 시 메소 추가
+                        document.querySelector('.star').innerHTML = "☆☆☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 2) {
+                    // 1성 > 2성 강화 확률
+                    if (randomValue < 0.85) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "2성 > 3성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 85.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 15.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 961,000"; // 메소 필요량 변경
+                        totalMoneySpent += 961000;
+                        document.querySelector('.star').innerHTML = "★★☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 1;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "1성 > 2성"; // 강화 실패 시 초기화
+                        reinforceResults[1].textContent = "성공확률 : 90.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 10.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 641,000"; // 메소 필요량 초기화
+                        totalMoneySpent += 641000;
+                        document.querySelector('.star').innerHTML = "★☆☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 3) {
+                    // 2성 > 3성 강화 확률
+                    if (randomValue < 0.85) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "3성 > 4성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 85.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 15.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 1,281,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1281000;
+                        document.querySelector('.star').innerHTML = "★★★☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 2;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "2성 > 3성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 85.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 15.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 961,000"; // 메소 필요량 변경
+                        totalMoneySpent += 961000;
+                        document.querySelector('.star').innerHTML = "★★☆☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 4) {
+                    // 3성 > 4성 강화 확률
+                    if (randomValue < 0.80) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "4성 > 5성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 80.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 20.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 1,601,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1601000;
+                        document.querySelector('.star').innerHTML = "★★★★☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 3;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "3성 > 4성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 85.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 15.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 1,281,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1281000;
+                        document.querySelector('.star').innerHTML = "★★★☆☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 5) {
+                    // 4성 > 5성 강화 확률
+                    if (randomValue < 0.75) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "5성 > 6성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 75.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 25.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 1,921,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1921000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 4;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "4성 > 5성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 80.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 20.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 1,601,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1601000;
+                        document.querySelector('.star').innerHTML = "★★★★☆ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 6) {
+                    // 5성 > 6성 강화 확률
+                    if (randomValue < 0.75) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "6성 > 7성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 75.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 25.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 2,241,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2241000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 5;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "5성 > 6성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 75.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 25.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 1,921,000"; // 메소 필요량 변경
+                        totalMoneySpent += 1921000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ☆☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 7) {
+                    // 6성 > 7성 강화 확률
+                    if (randomValue < 0.70) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "7성 > 8성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 65.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 35.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 2,561,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2561000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 6;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "6성 > 7성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 70.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 30.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 2,241,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2241000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★☆☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 8) {
+                    // 7성 > 8성 강화 확률
+                    if (randomValue < 0.65) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "8성 > 9성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 60.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 40.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 2,881,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2881000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 7;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "7성 > 8성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 65.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 35.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 2,561,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2561000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★☆☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 9) {
+                    // 8성 > 9성 강화 확률
+                    if (randomValue < 0.55) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "9성 > 10성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 55.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 45.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 3,201,000"; // 메소 필요량 변경
+                        totalMoneySpent += 3201000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 8;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "8성 > 9성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 60.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 40.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 2,881,000"; // 메소 필요량 변경
+                        totalMoneySpent += 2881000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★☆☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 10) {
+                    // 9성 > 10성 강화 확률
+                    if (randomValue < 0.55) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "10성 > 11성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 55.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 45.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 12,966,500"; // 메소 필요량 변경
+                        totalMoneySpent += 12966500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 9;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "9성 > 10성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 55.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 45.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 3,201,000"; // 메소 필요량 변경
+                        totalMoneySpent += 3201000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★☆ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 11) {
+                    // 10성 > 11성 강화 확률
+                    if (randomValue < 0.45) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "11성 > 12성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 45.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 55.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 29,817,500"; // 메소 필요량 변경
+                        totalMoneySpent += 29817500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 10;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "10성 > 11성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 50.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 50.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 12,966,500"; // 메소 필요량 변경
+                        totalMoneySpent += 12966500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ☆☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 12) {
+                    // 11성 > 12성 강화 확률
+                    if (randomValue < 0.40) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "12성 > 13성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 40.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 60.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 54,281,000"; // 메소 필요량 변경
+                        totalMoneySpent += 54281000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 11;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "11성 > 12성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 45.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 55.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 29,817,500"; // 메소 필요량 변경
+                        totalMoneySpent += 29817500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★☆☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 13) {
+                    // 12성 > 13성 강화 확률
+                    if (randomValue < 0.35) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "13성 > 14성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 35.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 65.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 90,416,500"; // 메소 필요량 변경
+                        totalMoneySpent += 90416500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 12;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "12성 > 13성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 40.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 60.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 54,281,000"; // 메소 필요량 변경
+                        totalMoneySpent += 54281000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★☆☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 14) {
+                    // 13성 > 14성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "14성 > 15성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 159,763,600"; // 메소 필요량 변경
+                        totalMoneySpent += 159763600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 13;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "13성 > 14성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 45.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 55.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 90,416,500"; // 메소 필요량 변경
+                        totalMoneySpent += 90416500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★☆☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 15) {
+                    // 14성 > 15성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "15성 > 16성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 71,316,500"; // 메소 필요량 변경
+                        totalMoneySpent += 71316500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 14;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "14성 > 15성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 159,763,600"; // 메소 필요량 변경
+                        totalMoneySpent += 159763600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★☆ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num >= 15 && num < 18) {
+                    // 15성부터 17성까지의 강화 확률과 파괴 확률 적용
+                    if (randomValue < 0.021) { // 2.1% 확률로 파괴
+                        num = 12; // 강화 단계를 12성 > 13성으로 초기화
+                        alert("장비가 파괴되었습니다."); // 장비 파괴 알림창 띄우기
+                        // ... 이하 생략
+                    } else if (randomValue < 0.30) { // 강화 성공 확률
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "16성 > 17성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 83,999,600"; // 메소 필요량 변경
+                        totalMoneySpent += 83999600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 15;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "15성 > 16성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 71,316,500"; // 메소 필요량 변경
+                        totalMoneySpent += 71316500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                    // 이 부분부터 넘어가지를 않음
+                } else if (num < 17) {
+                    // 16성 > 17성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "17성 > 18성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 98,016,700"; // 메소 필요량 변경
+                        totalMoneySpent += 98016700;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 15;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "15성 > 16성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 71,316,500"; // 메소 필요량 변경
+                        totalMoneySpent += 71316500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ☆☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 18) {
+                    // 17성 > 18성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "18성 > 19성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.20%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.80%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 113,422,300"; // 메소 필요량 변경
+                        totalMoneySpent += 113422300;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 16;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "16성 > 17성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.90%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.10%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 83,999,600"; // 메소 필요량 변경
+                        totalMoneySpent += 83999600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★☆☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 19) {
+                    // 18성 > 19성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "19성 > 20성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.20%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.80%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 130,270,000"; // 메소 필요량 변경
+                        totalMoneySpent += 130270000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 17;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "17성 > 18성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.20%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.80%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 98,016,700"; // 메소 필요량 변경
+                        totalMoneySpent += 98016700;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★☆☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 20) {
+                    // 19성 > 20성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "20성 > 21성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 63.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 63,00%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 7,00%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 148,612,400"; // 메소 필요량 변경
+                        totalMoneySpent += 148612400;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ☆☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 18;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "18성 > 19성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 70.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 67.20%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 2.80%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 113,422,300"; // 메소 필요량 변경
+                        totalMoneySpent += 113422300;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★☆☆ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 21) {
+                    // 20성 > 21성 강화 확률
+                    if (randomValue < 0.30) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "21성 > 22성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 67.90%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 63,00%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 7,00%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 168,501,500"; // 메소 필요량 변경
+                        totalMoneySpent += 168501500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★☆☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 19;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "20성 > 21성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 63.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 63.00%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 7,00%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 148,612,400"; // 메소 필요량 변경
+                        totalMoneySpent += 148612400;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num < 22) {
+                    // 21성 > 22성 강화 확률
+                    if (randomValue < 0.03) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "22성 > 23성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 3.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 77.60%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 77,60%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 19,40%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 189,988,600"; // 메소 필요량 변경
+                        totalMoneySpent += 189988600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★★☆☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 21;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "20성 > 21성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 63.00%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 63.00%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 7,00%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 148,612,400"; // 메소 필요량 변경
+                        totalMoneySpent += 148612400;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ☆☆☆☆☆"; // 별 이미지 변경
+                    }
+                }  else if (num < 23) {
+                    // 22성 > 23성 강화 확률
+                    if (randomValue < 0.02) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "23성 > 24성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 2.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 77.60%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 68,60%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 29,40%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 213,124,000"; // 메소 필요량 변경
+                        totalMoneySpent += 213124000;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★★★☆☆"; // 별 이미지 변경
+                    } else {
+                        num = 22;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "21성 > 22성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 30.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 77.60%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 63.00%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 7,00%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 168,501,500"; // 메소 필요량 변경
+                        totalMoneySpent += 168504500;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★☆☆☆☆"; // 별 이미지 변경
+                    }
+                } else if (num >= 24) {
+                    // 15성 이후 파괴 확률
+                    if (randomValue < 0.396) { // 2.1% 확률로 파괴
+                        num = 12; // 강화 단계를 12성 > 13성으로 초기화
+                        alert("장비가 파괴되었습니다."); // 장비 파괴 알림창 띄우기
+                        // ... 이하 생략
+                    } else {
+                        // 기존 코드를 유지한 상태로 나머지 경우 처리
+                        // ... 이하 생략
+                    }
+                } else if (num < 24) {
+                    // 23성 > 24성 강화 확률
+                    if (randomValue < 0.01) {
+                        num++;
+                        successesElement.textContent = currentSuccesses + 1; // 성공 횟수 증가
+                        reinforceResults[0].textContent = "24성 > 25성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 1.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 77.60%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 59,40%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 39,60%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "green");
+                        moneyElement.textContent = "필요한 메소 : 237,957,700"; // 메소 필요량 변경
+                        totalMoneySpent += 237957700;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★★★★☆"; // 별 이미지 변경
+                    } else {
+                        num = 23;
+                        failuresElement.textContent = currentFailures + 1; // 실패 횟수 증가
+                        reinforceResults[0].textContent = "22성 > 23성"; // 강화 성공 시 결과 변경
+                        reinforceResults[1].textContent = "성공확률 : 3.00%"; // 성공 확률 변경
+                        reinforceResults[2].textContent = "실패(유지)확률 : 77.60%"; // 실패(유지) 확률 변경
+                        reinforceResults[3].textContent = "실패(하락)확률 : 77.60%"; // 실패(하락) 확률 변경
+                        reinforceResults[4].textContent = "파괴 확률 : 19,40%"; // 파괴 확률 변경
+                        reinforceResults.forEach(p => p.style.color = "red");
+                        moneyElement.textContent = "필요한 메소 : 189,988,600"; // 메소 필요량 변경
+                        totalMoneySpent += 189988600;
+                        document.querySelector('.star').innerHTML = "★★★★★ ★★★★★ ★★★★★ <br> ★★★★★ ★★☆☆☆"; // 별 이미지 변경
+                    }
+                }
+                // 실패(하락)확률과 파괴 확률 숨기기 0성 > 1성 ~ 14성 > 15성
+                if (num >= 0 && num <= 14) { // 0성 > 1성 부분도 포함하여 숨김
+                    reinforceResults[3].style.display = "none"; // 실패(하락)확률 숨기기
+                    reinforceResults[4].style.display = "none"; // 파괴 확률 숨기기
+                } else {
+                    // 나머지 경우에는 보이게 설정
+                    reinforceResults[3].style.display = "block";
+                    reinforceResults[4].style.display = "block";
+                }
+                // 실패(하락)확률과 파괴 확률, 실패(유지) 확률 숨기기 15성 > 16성 부터 ~~~
+                if (num >= 15) {
+                    reinforceResults[2].style.display = "none"; // 실패(유지) 확률 숨기기
+                } else {
+                    // 나머지 경우에는 보이게 설정
+                    reinforceResults[2].style.display = "block";
+                }
+            } else {
+                reinforceResults[0].textContent = "최대 강화 횟수를 초과했습니다.";
+                reinforceResults[0].style.color = "blue";
+                moneyElement.textContent = "필요한 메소 : 626,000"; // 메소 필요량 초기화
+            }
+            moneyElement.textContent = `필요한 메소 : ${totalMoneySpent.toLocaleString()}`;
+
+            // 메소 총합 업데이트
+            const totalMoneySpentElement = document.getElementById("totalMoneySpent");
+            totalMoneySpentElement.textContent = `${totalMoneySpent.toLocaleString()} 메소`;
+        });
+
+        checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+                // 스타캐치 해제 체크박스가 체크되었을 때의 로직
+                reinforceButton.disabled = false; // 강화 버튼 활성화
+            } else {
+                // 스타캐치 해제 체크박스가 체크 해제되었을 때의 로직
+                reinforceButton.disabled = true; // 강화 버튼 비활성화
+            }
+        });
+
+
+        // const successProbability = 0.5; // 성공 확률
+
+        // reinforceButton.addEventListener("click", function () {
+        //     // 강화 버튼 클릭 이벤트 핸들러 내용...
+        //     // 강화 확률 계산 및 결과 변경 부분...
+
+        //     // 강화 성공 시 설정
+        //     if (randomValue < successProbability) { // 성공 확률에 따라 수정
+        //         // 결과 변경
+        //         reinforceResults[0].textContent = "24성 > 25성";
+        //         reinforceResults[1].textContent = "성공확률 : 1.00%";
+        //         reinforceResults[2].textContent = "실패(유지)확률 : 77.60%";
+        //         reinforceResults[3].textContent = "실패(하락)확률 : 59.40%";
+        //         reinforceResults[4].textContent = "파괴 확률 : 39.60%";
+        //         reinforceResults.forEach(p => p.style.color = "green");
+        //         moneyElement.textContent = "필요한 메소 : 237,957,700";
+
+        //         // 모달 창 열기
+        //         modal.style.display = "block";
+
+        //         // 성공 시 강화 단계를 0으로 초기화
+        //         num = 0;
+        //         // 여기서 강화 단계에 따른 확률 및 메소 필요량 등을 설정해줘야 합니다.
+        //     }
+
+        //     // 모달 창 닫기
+        //     closeModal.onclick = function () {
+        //         modal.style.display = "none";
+        //     }
+
+        //     window.onclick = function (event) {
+        //         if (event.target === modal) {
+        //             modal.style.display = "none";
+        //         }
+        //     }
+        // });
+
+
+    </script>
+</body>
+
+</html>

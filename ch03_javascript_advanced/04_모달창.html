@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창</title>
+    <style>
+        .container {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+
+            position: relative;
+        }
+
+        .modal {
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px 4px gainsboro;
+
+            position: absolute;
+            top: 10%;
+            left: 50%;
+
+            transform: translate(-50%, 0);
+        }
+        .modal2 {
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px 4px gainsboro;
+
+            position: absolute;
+            top: 10%;
+            left: 50%;
+
+            transform: translate(-50%, 0);
+        }
+        .align-end {
+            text-align: end;
+        }
+        @keyframes down{
+            0%{
+                top: 0;
+                transform: translate(-50%, -100%);
+            }
+            100%{
+                top: 10%;
+                transform: translate(-50%, 0);
+            }
+        }
+        .down-modal{
+            animation: down 0.5s forwards;
+        }
+        .d-none{
+            display: none;
+        }
+
+        @keyframes middle {
+            0%{
+                width: 0px;
+                height: 0px;
+                /* transform: translate(-50%, 0); */
+            }
+            100%{
+                width: 400px;
+                height: 300px;
+                /* transform: translate(-50%, 0); */
+            }
+        }
+        .middle-modal{
+            animation: middle 1s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <button onclick="f_down()">내려오는 모달창</button>
+        </div>
+        <div>
+            <button onclick="f_middle()">중앙에서 두두등장하는 모달창</button>
+        </div>
+        <!-- 내려오는 모달창 -->
+        <div class="modal down-modal d-none">
+            <div class="align-end">
+                <img onclick="f_close()" width="40" height="40" src="../resources/images/이미지/mugiwara.webp" alt="">
+            </div>
+        </div>
+        <!-- 중앙에서 나오는 모달창 -->
+        <div class="modal2 middle-modal d-none">
+            <div class="align-end">
+                <img onclick="f_close2()" width="40" height="40" src="../resources/images/이미지/mugiwara.webp" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const v_modal = document.getElementsByClassName("modal")[0];
+        const v_modal2 = document.getElementsByClassName("modal2")[0];
+
+        // display가 none이었다가 해제되는 경우 지정한 애니메이션이 동작한다.
+        function f_down(){
+            v_modal.classList.remove("d-none");
+        }
+
+        function f_close(){
+            v_modal.classList.add("d-none");
+        }
+
+        function f_middle(){
+            v_modal2.classList.remove("d-none");
+        }
+        function f_close2(){
+            v_modal2.classList.add("d-none");
+        }
+    </script>
+</body>
+
+</html>

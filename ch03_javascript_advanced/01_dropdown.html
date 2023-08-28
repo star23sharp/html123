@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 800px;
+            height: 500px;
+            margin: auto;
+            border: 1px solid black;
+        }
+        .nav-bar{
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: springgreen;
+        }
+        .nav-bar a{
+            text-decoration: none;
+            color: black;
+            margin: 10px;
+        }
+        .nav-bar > div{
+            display: flex;
+            align-items: center;
+        }
+        .dropdown{
+            position: relative;
+        }
+        .drop-content{
+            position: absolute;
+            top: 1000;
+            background-color: white;
+            box-shadow: 2px 2px 4px 0px gainsboro;
+            width: 150px;
+
+            display: flex;
+            flex-direction: column;
+
+            visibility: hidden;
+        }
+
+        .dropdown:hover .drop-content{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <div>
+                <img height="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/220px-Pokebola-pokeball-png-0.png" alt="">
+            </div>
+            <div>
+                <a href="">포켓몬소개</a>
+                <a href="">포켓몬도감</a>
+                <div class="dropdown">
+                    <a  class="dropbtn" href="">포켓몬스터★</a>
+                    <div class="drop-content">
+                        <a href="">소드 실드</a>
+                        <a href="javascript:f_logout();">스칼렛 바이올렛</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var v_dropbtn = document.getElementsByClassName("dropbtn")[0];
+        var v_content = document.getElementsByClassName("drop-content")[0];
+        var v_id = sessionStorage.getItem("loginid");
+        if (v_id != null) {
+            v_dropbtn.innerHTML = v_id + "님▼"
+        } else {
+            // 해당 태그를 문서내에서 삭제합니다.
+            v_content.remove();
+        }
+
+        // 로그아웃시 세션스토리지에 저장된 값을 삭제하고 새로고침한다.
+        function f_logout() {
+            sessionStorage.removeItem("loginid");
+            location.reload();
+        }
+    </script>
+</body>
+</html>

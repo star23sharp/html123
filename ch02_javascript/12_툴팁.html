@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>툴립</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .tooltip{
+            position: relative;
+        }
+        .tooltip-text{
+            position: absolute;
+            bottom: 100%;
+            /* right: 1%; */
+            background-color: violet;
+
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+
+            /* display: none; */
+        }
+
+        /* tooltip 클래스에 hover 시 */
+        /* tooltip - text 클래스에 스타일 적용 */
+        .tooltip:hover .tooltip-text{
+            display: block;
+        }
+
+        /* 말풍선 꼬리 만들기 */
+        .tooltip-text::after {
+            content: " ";
+            position: absolute;
+
+            right: 50%;
+            top: 100%;
+
+            width: 0;
+            height: 0;
+
+            border: 5px solid;
+            border-color: violet transparent transparent transparent;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div title="머머리">무료툴립</div>
+
+        <div class="tooltip">
+            나만의 툴팁 
+            <div class="tooltip-text">무료보다 낫네</div>
+        </div>
+    </div>
+</body>
+</html>
