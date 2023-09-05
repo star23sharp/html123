@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미세먼지 시각화</title>
+</head>
+
+<body>
+    <h1>2022년 미세먼지 경보 이력</h1>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let v_airData = JSON.parse(localStorage.getItem("airData"));
+        // console.log(v_airData);
+        const ctx = document.getElementById('myChart');
+        
+        let districtNameArray = [];
+
+        console.log(v_airData[0]);
+
+        for(let i = 0; i < v_airData.length; i++){
+            let districtName = v_airData[i]["districtName"];
+            districtNameArray.push(districtName)
+        }
+
+        console.log(districtNameArray);
+
+        const v_dup = new Set(districtNameArray);
+        const v_arr = Array.from(v_dup);
+
+        console.log(v_arr);
+        
+// 라벨이 있잖아요, 에어데이타쪽에는 제주 몇번 올라갔는지 정보가 있다
+//  라벨이 제주였을때 에어 데이터를 165번을 돌려
+//  얘랑 같다면 변수의 값을 1씩 늘어나고
+// 제주쪽이 끝날때 psuh를 위 초기화 
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: v_arr,
+                datasets: [{
+                    label: '',
+                    data: [],
+                    borderWidth: 2,
+                    backgroundColor: []
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

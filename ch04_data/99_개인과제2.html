@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제2</title>
+</head>
+
+<body>
+    <button onclick="f_send()">요청 보내기</button>
+
+    <script>
+
+        function f_send() {
+            let pageNo = 1;
+            f_ajax(pageNo);
+        }
+
+        let v_relic = [];
+
+        function f_ajax(p_pageNo) {
+            /* Javascript 샘플 코드 */
+
+
+            var xhr = new XMLHttpRequest();
+            var url = 'http://apis.data.go.kr/4510000/GetCulturalHeritageService/getCulturalHeritageInfo'; /*URL*/
+            var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + 'jSrv1hCrWhAg4S0z3PLabYFVRVAV1aya1IFy8UhmGV73FjLn8Oa2MqhXevU9lBliYoIKeccmAGd63RyLt%2FeWAw%3D%3D'; /*Service Key*/
+            queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('json'); /**/
+            queryParams += '&' + encodeURIComponent('pageIndex') + '=' + encodeURIComponent(p_pageNo); /**/
+            queryParams += '&' + encodeURIComponent('firstIndex') + '=' + encodeURIComponent('1'); /**/
+            queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON'); /**/
+            xhr.open('GET', url + queryParams);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    // alert('Status: ' + this.status + 'nHeaders: ' + JSON.stringify(this.getAllResponseHeaders()) + 'nBody: ' + this.responseText);
+                    let v_json = JSON.parse(this.responseText);
+                    console.log(v_json);
+                    console.log(v_json["response"]);
+                    console.log(v_json["response"]["body"]);
+                    console.log(v_json["response"]["body"]["items"]);
+                    console.log(v_json["response"]["body"]["items"]["item"]);
+                    console.log(v_json["response"]["body"]["items"]["item"].length);
+
+                    if (v_json["response"]["body"]["items"]["item"].length > 0) {
+                        let v_items = v_json["response"]["body"]["items"]["item"];
+
+                        for (let i = 0; i < v_items.length; i++) {
+                            v_relic.push(v_items[i]);
+                        }
+                        p_pageNo++; // 페이지 번호를 증가시킵니다.
+                        f_ajax(p_pageNo); // 다음 페이지를 요청합니다.
+                    } else {
+                        // 데이터가 0개 오는 구간
+                        document.write("데이터를 전부 불러왔습니다.")
+                        localStorage.setItem("Relic", JSON.stringify(v_relic));
+                    }
+
+                }
+            };
+            xhr.send('');
+        }
+
+    </script>
+
+</body>
+
+</html>

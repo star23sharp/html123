@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제</title>
+    <!-- 공공데이터포털 행정안전부 - 재난문자방송 발령 현황 -->
+    <!-- https://www.data.go.kr/data/3058822/openapi.do -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <style>
+        /* div{
+            border: 1px solid red;;
+        } */
+        .Code {
+
+            text-align: center;
+        }
+
+        .container {
+            width: 1000px;
+            height: 750px;
+
+        }
+
+        .information {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .information>p {
+            text-align: center;
+        }
+
+        .bottom {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="f_send()">요청 보내기</button>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">K - Relic</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">유물 종류</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                유뮬이란?
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">유물에 대해</a></li>
+                                <li><a class="dropdown-item" href="#">유물</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">유물 발견 시 행동</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">로그인</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img width="100%" height="500px"
+                    src="https://www.goodmorningcc.com/news/photo/201908/217179_220885_05.jpg"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img width="100%" height="500px"
+                    src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMTRfMjU1/MDAxNTgxNjIxODU0NTE0.cnU8jaTHaAy_OdjjiBcy4ShCjUGQdFpp-OGyK0uvziog.qAUMgyCXlkuyKqVXUnUQ3vYPpeBi6OQsH99wWyxXjrEg.JPEG.ohryan77/20a25018d0dad609e4720ac3fd6cadfd.jpg?type=w800"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img width="100%" height="500px"
+                    src="https://cdn.gameple.co.kr/news/photo/attach/images/183/067/082/e9a0de41572a9218244c1419ca779278.jpg"
+                    class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="Code">
+        <h1>재앙 발생 시 행동 강령</h1>
+        <p>가가가가가가가가가</p>
+        <p>가가가가가가가가가</p>
+        <p>가가가가가가가가가</p>
+    </div>
+    <div class="container">
+        <div class="information">
+            <div>
+                <img src="../resources/images/이미지/euk.jpeg" alt="">
+            </div>
+            <div>
+                <p>인포메이션인포메이션 <br>
+                    인포메이션인포메이션</p>
+            </div>
+        </div>
+        <div class="information">
+            <div>
+                <p>인포메이션인포메이션 <br>
+                    인포메이션인포메이션</p>
+            </div>
+            <div>
+                <img src="../resources/images/이미지/euk.jpeg" alt="">
+            </div>
+        </div>
+        <div class="information">
+            <div>
+                <img src="../resources/images/이미지/euk.jpeg" alt="">
+            </div>
+            <div>
+                <p>인포메이션인포메이션 <br>
+                    인포메이션인포메이션</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- 맨 밑 홈페이지 정보 -->
+        <hr>
+        <div class="bottom">
+            <div>
+                <img width="50px" src="../resources/images/이미지/question-mark.svg" alt="">
+            </div>
+            <div>
+                명칭 : 주식회사 OO | 등록번호 : 경기 아 1231231 | 등록연월일 : 2009. 12. 14 | 제호 : 인벤 <br>
+                발행인 : 설효림 | 편집인 : 지수원 | 발행소 : 서울시 손석구
+            </div>
+        </div>
+    </div>
+    <script>
+        function f_send() {
+            let pageNo = 1;
+            f_ajax(pageNo);
+        }
+
+        let v_relic = [];
+
+        function f_ajax(p_pageNo) {
+
+
+            /* Javascript 샘플 코드 */
+            var xhr = new XMLHttpRequest();
+            var url = 'http://apis.data.go.kr/4510000/GetCulturalHeritageService/getCulturalHeritageInfo'; /*URL*/
+            var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + 'jSrv1hCrWhAg4S0z3PLabYFVRVAV1aya1IFy8UhmGV73FjLn8Oa2MqhXevU9lBliYoIKeccmAGd63RyLt%2FeWAw%3D%3D'; /*Service Key*/
+            queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('json'); /**/
+            queryParams += '&' + encodeURIComponent('pageIndex') + '=' + encodeURIComponent(p_pageNo); /**/
+            queryParams += '&' + encodeURIComponent('firstIndex') + '=' + encodeURIComponent('1'); /**/
+            queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON'); /**/
+            xhr.open('GET', url + queryParams);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    // alert('Status: ' + this.status + 'nHeaders: ' + JSON.stringify(this.getAllResponseHeaders()) + 'nBody: ' + this.responseText);
+                    let v_json = JSON.parse(this.responseText);
+                    console.log(v_json);
+                    console.log(v_json["response"]);
+                    console.log(v_json["response"]["body"]);
+                    console.log(v_json["response"]["body"]["items"]);
+                    console.log(v_json["response"]["body"]["items"]["item"]);
+                    console.log(v_json["response"]["body"]["items"]["item"].length);
+
+                    if (v_json["response"]["body"]["items"]["item"].length > 58) {
+                        let v_items = v_json["response"]["body"]["items"]["item"];
+
+                        for (let i = 0; i < v_items.length; i++) {
+                            v_relic.push(v_items[i]);
+                        }
+                        p_pageNo++; // 페이지 번호를 증가시킵니다.
+                        f_ajax(p_pageNo); // 다음 페이지를 요청합니다.
+                    } else {
+                        // 데이터가 0개 오는 구간
+                        document.write("데이터를 전부 불러왔습니다.")
+                        localStorage.setItem("Relic", JSON.stringify(v_relic));
+                    }
+
+                }
+            };
+            xhr.send('');
+        }
+
+
+    </script>
+</body>
+
+</html>

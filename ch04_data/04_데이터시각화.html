@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ChartJS  03JS 구글 -->
+
+    <style>
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h3>학생 지역 조사</h3>
+    <div class="container">
+        <!-- canvus의 width, height은 비율을 지정한다. -->
+        <!-- 크기 조정은 canvus를 가싸고ㅗ 있는 div를 통해 준다. -->
+        <canvas id="myChart" width="150" height="100"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar', //line, pie, doughnut, rader
+            data: {
+                labels: ['탑', '정글', '미드', '바텀', '서폿', '벌레'],
+                datasets: [{
+                    label: '라이너 비율 통계',
+                    data: [1, 6, 9, 3, 1, 10],
+                    borderWidth: 3,
+                    backgroundColor: ["red", "blue", "violet", "ivory", "purple", "green"]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

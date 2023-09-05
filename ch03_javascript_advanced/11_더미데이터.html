@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더미데이터</title>
+</head>
+<body>
+    <script>
+        // 게시글의 데이터 구조
+        // 글번호, 글제목, 직성자, 글내용, 작성일
+        
+        let v_datas = [];
+
+        v_json = {};
+        v_json["no"] = 2146;
+        v_json["title"] = "학원 근처 갈만한 식당 추천좀요";
+        v_json["id"] = "a001";
+        v_json["content"] = "점심시간에 메뉴를 고르다가 점심시간이 끝났습니다...";
+
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2147;
+        v_json["title"] = "로빈! 살고 싶다고 말해~~?";
+        v_json["id"] = "b001";
+        v_json["content"] = "살고싶어~~~~~~~~~~~~~~~~~~~~~~~~";
+
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2148;
+        v_json["title"] = "고무고무열매의 또 다른 이름은...";
+        v_json["id"] = "c001";
+        // 용도에 따라 태그를 입력한 내용이 html처럼
+        // 동작하게 두는 경우고 있고, 대부분은 막는다.
+        v_json["content"] = "<p style='color:red'>동물계 사람사람열매 환수종 모델은 니카</p>";
+
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2149;
+        v_json["title"] = "백수가 되고싶어요";
+        v_json["id"] = "d001";
+        v_json["content"] = "백수가 되고싶은 방법은 로또 1등.";
+
+        v_datas.push(v_json);
+
+        v_json = {};
+        v_json["no"] = 2150;
+        v_json["title"] = "qwe123";
+        v_json["id"] = "e001";
+        v_json["content"] = "qwer1234";
+
+        v_datas.push(v_json);
+
+        localStorage.setItem("boardDB", JSON.stringify(v_datas));
+
+        document.write("생성 완료!")
+    </script>
+</body>
+</html>
